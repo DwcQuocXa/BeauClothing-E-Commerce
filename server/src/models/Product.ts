@@ -1,14 +1,14 @@
 import mongoose, { Document } from "mongoose";
 
-export type Categories = "Shirts" | "Pants" | "Shoes" | "Jackets";
+export type Categories = "T-Shirts" | "Pants" | "Shoes" | "Jackets";
 
 export type ProductDocument = Document & {
   name: string;
   description: string;
-  categories: Categories[];
+  categories: Categories;
   sizes: string[];
   price: number;
-  img: string;
+  img: string[];
 };
 
 const productSchema = new mongoose.Schema({
@@ -21,7 +21,7 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  categories: [String],
+  categories: String,
   sizes: {
     type: Array,
     default: ["XS", "S", "M", "L", "XL"],
@@ -30,7 +30,7 @@ const productSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  img: String,
+  img: [String],
 });
 
 export default mongoose.model<ProductDocument>("Product", productSchema);

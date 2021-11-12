@@ -16,7 +16,8 @@
   },
   "scripts": {
     "start": "npm run serve",
-    "serve": "tsc && nodemon ./dist/server.js"
+    "serve": "tsc && nodemon ./dist/server.js",
+    "data:import": "tsc && node ./dist/data/ImportData.js"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",
