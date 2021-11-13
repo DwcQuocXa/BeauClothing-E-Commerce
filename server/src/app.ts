@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-app.use("/products", productRouter);
+app.use("/api/v1/products", productRouter);
 
 app.get("/", (req, res) => {
   res.send("Deploy successfully");
