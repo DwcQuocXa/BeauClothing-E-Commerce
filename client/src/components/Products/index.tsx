@@ -1,5 +1,5 @@
-import { Box, CircularProgress, Grid, Typography } from "@mui/material";
 import React from "react";
+import { Box, CircularProgress, Grid, Typography } from "@mui/material";
 
 import { useAppSelector } from "../../hooks/useAppDispatchAndSelector";
 import BackToTop from "../BackToTop";
@@ -11,15 +11,22 @@ const Products = () => {
   const classes = useStyles();
   const products = useAppSelector((state) => state.products.productsList);
   const searchTerm = useAppSelector((state) => state.products.searchTerm);
+  const category = useAppSelector((state) => state.category.category);
+
   return (
     <div className={classes.root}>
       <BackToTop />
       <Box className={classes.upper}>
         <Typography
           variant="h3"
-          sx={{ flexGrow: 1, fontWeight: 600, fontFamily: "Lucida Console" }}
+          sx={{
+            flexGrow: 1,
+            fontWeight: 600,
+            fontFamily: "Lucida Console",
+            textTransform: "uppercase",
+          }}
         >
-          VIEW ALL
+          {category}
         </Typography>
         <Search />
       </Box>
@@ -28,8 +35,10 @@ const Products = () => {
       ) : (
         <Grid container spacing={3}>
           {products
-            .filter((product) =>
-              product.name.toLowerCase().includes(searchTerm.toLowerCase())
+            .filter(
+              (product) =>
+                product.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
+                (product.categories === category || category === "View All")
             )
             .map((product) => (
               <Grid key={product._id} item xs={3}>

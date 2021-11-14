@@ -5,6 +5,7 @@ export const baseURL = "http://localhost:5000/api/v1";
 export const SET_ALL_PRODUCTS = "GET_ALL_PRODUCT";
 export const GET_ALL_PRODUCTS = "GET_ALL_PRODUCTS";
 export const SEARCH_PRODUCTS = "SEARCH_PRODUCTS";
+export const SET_CATEGORY = "SET_CATEGORY";
 
 export type Categories = "T-Shirts" | "Pants" | "Shoes" | "Jackets";
 
@@ -34,6 +35,17 @@ export type SearchProductsAction = {
   payload: {
     searchTerm: string;
   };
+};
+
+export type SetCategoryAction = {
+  type: typeof SET_CATEGORY;
+  payload: {
+    category: string;
+  };
+};
+
+export type CategoryState = {
+  category: string;
 };
 
 export type ProductsActions =

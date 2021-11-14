@@ -1,9 +1,11 @@
 import { Box } from "@mui/material";
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import NavBar from "./components/NavBar";
 import Products from "./components/Products";
+import ProductDetails from "./components/Products/ProductCard/ProductDetail";
 import SideDrawer from "./components/SideDrawer";
 import { getProducts } from "./redux/actions";
 
@@ -14,11 +16,20 @@ function App() {
   }, [dispatch]);
 
   return (
-    <Box sx={{ flexGrow: 1, display: "flex" }}>
-      <NavBar />
-      <SideDrawer />
-      <Products />
-    </Box>
+    <BrowserRouter>
+      <Switch>
+        <Box sx={{ flexGrow: 1, display: "flex" }}>
+          <NavBar />
+          <Route exact path="/products" render={() => <SideDrawer />} />
+          <Route exact path="/products" render={() => <Products />} />
+          <Route
+            exact
+            path="/products/:productId"
+            render={() => <ProductDetails />}
+          />
+        </Box>
+      </Switch>
+    </BrowserRouter>
   );
 }
 
