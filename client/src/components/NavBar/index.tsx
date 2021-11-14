@@ -5,6 +5,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import AccountBoxOutlinedIcon from "@mui/icons-material/AccountBoxOutlined";
 import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import useStyles from "./style";
 
@@ -19,13 +20,19 @@ export default function NavBar() {
       sx={{ zIndex: (theme) => theme.zIndex.drawer + 1, boxShadow: "none" }}
     >
       <Toolbar className={classes.toolBar}>
-        <Typography
-          variant="h3"
-          sx={{ flexGrow: 1, fontWeight: 600, fontFamily: "Lucida Console" }}
-          onClick={handleBack}
+        <Link
+          to="/products"
+          style={{
+            textDecoration: "none",
+            color: "inherit",
+            flexGrow: 1,
+            fontWeight: 600,
+            fontFamily: "Lucida Console",
+            fontSize: 60,
+          }}
         >
           BEAU
-        </Typography>
+        </Link>
 
         <Button
           className={classes.signInBtn}

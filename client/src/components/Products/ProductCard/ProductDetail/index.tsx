@@ -1,14 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import {
-  CircularProgress,
-  Grid,
-  Typography,
-  List,
-  ListItem,
-  ListItemText,
-  Button,
-} from "@mui/material";
+import { CircularProgress, Grid, Typography, Button } from "@mui/material";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 
 import { useAppSelector } from "../../../../hooks/useAppDispatchAndSelector";
