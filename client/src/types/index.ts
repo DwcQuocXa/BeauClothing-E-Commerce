@@ -4,6 +4,7 @@ export const baseURL = "http://localhost:5000/api/v1";
 
 export const SET_ALL_PRODUCTS = "GET_ALL_PRODUCT";
 export const GET_ALL_PRODUCTS = "GET_ALL_PRODUCTS";
+export const SEARCH_PRODUCTS = "SEARCH_PRODUCTS";
 
 export type Categories = "T-Shirts" | "Pants" | "Shoes" | "Jackets";
 
@@ -14,6 +15,7 @@ export type Product = {
   sizes: string[];
   price: number;
   img: string[];
+  _id: string;
 };
 
 export type SetProductsAction = {
@@ -27,6 +29,19 @@ export type GetProductsAction = {
   type: typeof GET_ALL_PRODUCTS;
 };
 
+export type SearchProductsAction = {
+  type: typeof SEARCH_PRODUCTS;
+  payload: {
+    searchTerm: string;
+  };
+};
+
+export type ProductsActions =
+  | SetProductsAction
+  | GetProductsAction
+  | SearchProductsAction;
+
 export type ProductsState = {
   productsList: Product[];
+  searchTerm: string;
 };

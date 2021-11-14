@@ -2,7 +2,7 @@ import { call, put, takeLatest } from "redux-saga/effects";
 
 import { requestGetProducts } from "../request/requestProducts";
 import { GetProductsAction, GET_ALL_PRODUCTS } from "../../../types";
-import { getProducts, setProducts } from "../../actions";
+import { setProducts } from "../../actions";
 
 function* handleGetCountries(action: GetProductsAction) {
   try {

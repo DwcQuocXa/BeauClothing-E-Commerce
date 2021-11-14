@@ -1,16 +1,18 @@
 import {
   ProductsState,
-  SetProductsAction,
+  SEARCH_PRODUCTS,
   SET_ALL_PRODUCTS,
+  ProductsActions,
 } from "../../types";
 
 const initialState: ProductsState = {
   productsList: [],
+  searchTerm: "",
 };
 
 export default function products(
   state = initialState,
-  action: SetProductsAction
+  action: ProductsActions
 ): ProductsState {
   switch (action.type) {
     case SET_ALL_PRODUCTS:
@@ -18,6 +20,13 @@ export default function products(
       return {
         ...state,
         productsList: [...state.productsList].concat(products),
+      };
+
+    case SEARCH_PRODUCTS:
+      const { searchTerm } = action.payload;
+      return {
+        ...state,
+        searchTerm,
       };
 
     default:

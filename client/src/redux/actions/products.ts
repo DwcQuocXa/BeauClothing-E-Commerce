@@ -4,6 +4,8 @@ import {
   SetProductsAction,
   GET_ALL_PRODUCTS,
   GetProductsAction,
+  SEARCH_PRODUCTS,
+  SearchProductsAction,
 } from "../../types";
 
 export function setProducts(products: Product[]): SetProductsAction {
@@ -18,5 +20,14 @@ export function setProducts(products: Product[]): SetProductsAction {
 export function getProducts(): GetProductsAction {
   return {
     type: GET_ALL_PRODUCTS,
+  };
+}
+
+export function searchProducts(searchTerm: string): SearchProductsAction {
+  return {
+    type: SEARCH_PRODUCTS,
+    payload: {
+      searchTerm,
+    },
   };
 }
