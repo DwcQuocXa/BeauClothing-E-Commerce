@@ -3,18 +3,27 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
 import AccountBoxOutlinedIcon from "@mui/icons-material/AccountBoxOutlined";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import useStyles from "./style";
 
 export default function NavBar() {
   const classes = useStyles();
+  const location = useLocation();
 
   return (
     <AppBar
-      sx={{ zIndex: (theme) => theme.zIndex.drawer + 1, boxShadow: "none" }}
+      sx={{
+        zIndex: (theme) => theme.zIndex.drawer + 1,
+        boxShadow: "none",
+      }}
+      className={classes[location.pathname === "/" ? "root" : "empty"]}
     >
-      <Toolbar className={classes.toolBar}>
+      <Toolbar
+        className={
+          classes[location.pathname === "/" ? "toolBarTransparent" : "toolBar"]
+        }
+      >
         <Link
           to="/products"
           style={{
@@ -28,13 +37,11 @@ export default function NavBar() {
         >
           BEAU
         </Link>
-
         <Button
-          className={classes.signInBtn}
           variant="outlined"
           color="inherit"
+          startIcon={<AccountBoxOutlinedIcon />}
         >
-          <AccountBoxOutlinedIcon />
           Sign In
         </Button>
       </Toolbar>

@@ -2,6 +2,7 @@ import { Box } from "@mui/material";
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import LandingPage from "./components/LandingPage";
 
 import NavBar from "./components/NavBar";
 import Products from "./components/Products";
@@ -20,6 +21,7 @@ function App() {
       <Switch>
         <Box sx={{ flexGrow: 1, display: "flex" }}>
           <NavBar />
+          <Route exact path="/" render={() => <LandingPage />} />
           <Route exact path="/products" render={() => <SideDrawer />} />
           <Route exact path="/products" render={() => <Products />} />
           <Route

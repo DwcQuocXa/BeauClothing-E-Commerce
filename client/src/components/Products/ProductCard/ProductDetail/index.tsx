@@ -16,7 +16,6 @@ const ProductDetails = () => {
   const products = useAppSelector((state) => state.products.productsList);
   const { productId } = useParams<ProductParam>();
   const product = products.find((product) => product._id === productId);
-  console.log(product?.name);
 
   return (
     <div className={classes.root}>
